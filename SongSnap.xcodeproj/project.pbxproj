@@ -11,6 +11,7 @@
 		B444F4F82B4D2ED0006BA280 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444F4F72B4D2ED0006BA280 /* ContentView.swift */; };
 		B444F4FA2B4D2ED3006BA280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B444F4F92B4D2ED3006BA280 /* Assets.xcassets */; };
 		B444F4FD2B4D2ED3006BA280 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B444F4FC2B4D2ED3006BA280 /* Preview Assets.xcassets */; };
+		B444F50A2B4D3D41006BA280 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444F5092B4D3D41006BA280 /* LyricsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		B444F4F72B4D2ED0006BA280 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B444F4F92B4D2ED3006BA280 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B444F4FC2B4D2ED3006BA280 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B444F5092B4D3D41006BA280 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B444F4F72B4D2ED0006BA280 /* ContentView.swift */,
+				B444F5092B4D3D41006BA280 /* LyricsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B444F4F82B4D2ED0006BA280 /* ContentView.swift in Sources */,
+				B444F50A2B4D3D41006BA280 /* LyricsView.swift in Sources */,
 				B444F4F62B4D2ED0006BA280 /* SongSnapApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
