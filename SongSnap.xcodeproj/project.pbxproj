@@ -51,8 +51,8 @@
 		B444F4F42B4D2ED0006BA280 /* SongSnap */ = {
 			isa = PBXGroup;
 			children = (
-				B444F4F52B4D2ED0006BA280 /* SongSnapApp.swift */,
-				B444F4F72B4D2ED0006BA280 /* ContentView.swift */,
+				B444F5032B4D2EE4006BA280 /* App */,
+				B444F5042B4D2EE9006BA280 /* Core */,
 				B444F4F92B4D2ED3006BA280 /* Assets.xcassets */,
 				B444F4FB2B4D2ED3006BA280 /* Preview Content */,
 			);
@@ -65,6 +65,46 @@
 				B444F4FC2B4D2ED3006BA280 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B444F5032B4D2EE4006BA280 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B444F4F52B4D2ED0006BA280 /* SongSnapApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B444F5042B4D2EE9006BA280 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B444F5072B4D2F12006BA280 /* Model */,
+				B444F5052B4D2F00006BA280 /* View */,
+				B444F5062B4D2F0A006BA280 /* ViewModel */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B444F5052B4D2F00006BA280 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B444F4F72B4D2ED0006BA280 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B444F5062B4D2F0A006BA280 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B444F5072B4D2F12006BA280 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
