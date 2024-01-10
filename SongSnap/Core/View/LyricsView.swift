@@ -8,29 +8,49 @@
 import SwiftUI
 
 struct LyricsView: View {
+    @EnvironmentObject var lyricsVM: LyricsVM
+    let noLyricsMessage: String = "Sorry, either these lyrics are not in the database or check the spelling for artist and song"
+    
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             Color.mint.ignoresSafeArea()
             
-            VStack(alignment: .leading) {
-                Text("Times Like These")
-                    .font(.title)
-                    .fontWeight(.bold)
+            VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(lyricsVM.song.title)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Text("By \(lyricsVM.song.artist)")
+                        .font(.headline)
+                }
                 
-                Text("Song by Foo Fighters")
-                    .font(.headline)
-                    .padding(.bottom, 20)
+                Text(lyricsVM.song.lyrics.isEmpty ? noLyricsMessage : lyricsVM.song.lyrics)
                 
-                Text("I, i'm a one way motorway\ni'm a road that drives away and follows you back home\nI i'm a street light shining i'm a white light blinding bright burning off and on\n\nits times like these you learn to love again\nits times like these time and time again\n\nI i'm a new day rising i'm a brand new sky to hang the stars upon tonight I i'm a little divided do i stay or run away and leave it all behind\n\nits times like these you learn to live again\nits times like these you give and give again\nits times like thses you learn to love again its times like these time and time again\n\n\nits times like these you learn to live again\nits times like these you give and give again\nits times like thses you learn to love again its times like these time and time again")
+                Spacer()
             } // end VStack
             .padding(.horizontal, 8)
+            .onAppear(perform: {
+                Task {
+                    do {
+                        lyricsVM.songLyrics = try await lyricsVM.fetchData()
+                        lyricsVM.song.lyrics = lyricsVM.songLyrics?.lyrics.removeLyricsPrefix() ?? ""
+                    } catch NetworkError.invalidURL {
+                        print("bad url")
+                    } catch NetworkError.invalidData {
+                        print("bad data")
+                    } catch {
+                        print("unexpected error")
+                    }
+                }
+            })
         } // end ZStack
-        
     }
 }
 
 #Preview {
     NavigationStack {
         LyricsView()
+            .environmentObject(LyricsVM())
     }
 }

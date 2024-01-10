@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+enum FocusedField {
+    case artist, songTitle
+}
+
 struct ContentView: View {
-    @State private var artist: String = ""
-    @State private var song: String = ""
+    @State private var artistText: String = ""
+    @State private var songText: String = ""
     @State private var showLyrics: Bool = false
+    @FocusState private var focusedField: FocusedField?
+    
+    @EnvironmentObject var lyricsVM: LyricsVM
     
     var body: some View {
         NavigationStack {
@@ -35,14 +42,18 @@ struct ContentView: View {
                     } // end HStack
                     
                     VStack(spacing: 15) {
-                        TextField("Enter name of artist", text: $artist)
+                        TextField("Enter name of artist", text: $artistText)
+                            .focused($focusedField, equals: .artist)
+                            .autocorrectionDisabled()
                             .padding()
                             .background()
                             .clipShape(
                                 RoundedRectangle(cornerRadius: 10)
                             )
                         
-                        TextField("Enter name of song", text: $song)
+                        TextField("Enter title of song", text: $songText)
+                            .focused($focusedField, equals: .songTitle)
+                            .autocorrectionDisabled()
                             .padding()
                             .background()
                             .clipShape(
@@ -50,8 +61,10 @@ struct ContentView: View {
                             )
                         
                         Button(action: {
-                            print("searching lyrics")
+                            lyricsVM.song.artist = artistText.formatSongText()
+                            lyricsVM.song.title = songText.formatSongText()
                             showLyrics = true
+                            print("searching lyrics")
                         }, label: {
                             Text("Search Lyrics")
                                 .padding()
@@ -71,13 +84,17 @@ struct ContentView: View {
                         }
                     } // end VStack
                     .padding(.top, 30)
+                    .onSubmit {
+                        focusedField = .artist
+                    }
                 } // end VStack
                 .padding()
             } // end ZStack
         } // end NavStack
-    }
+    } // end body
 }
 
 #Preview {
     ContentView()
+        .environmentObject(LyricsVM())
 }
