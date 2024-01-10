@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+extension String {
+    func formatToEndpointText() -> String {
+        return self.lowercased().replacingOccurrences(of: " ", with: "-")
+    }
+    
+    func formatSongText() -> String {
+        return self.trimmingCharacters(in: .whitespaces).capitalized
+    }
+    
+    func removeLyricsPrefix() -> String {
+        if let startIndex = self.firstIndex(of: "\n") {
+            return String(self.suffix(from: startIndex))
+        } else {
+            return self
+        }
+    }
+}

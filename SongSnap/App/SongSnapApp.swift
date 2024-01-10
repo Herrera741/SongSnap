@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SongSnapApp: App {
+    @StateObject var viewModel = LyricsVM()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
